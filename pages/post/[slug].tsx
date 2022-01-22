@@ -97,12 +97,29 @@ const Post = ({ post }: IProps) => {
             {...sanityClient.config()}
             content={post.body}
             serializers={{
-              h1: (props: any) => (
-                <h1 className="text-2xl font-bold my-5" {...props} />
-              ),
+              h1: (props: any) => {
+                return <h1 className="text-2xl font-bold my-5" {...props} />;
+              },
               h2: (props: any) => (
                 <h1 className="text-xl font-bold my-5" {...props} />
               ),
+              h3: (props: any) => (
+                <h1 className="text-lg font-bold my-5" {...props} />
+              ),
+              h4: (props: any) => (
+                <h1 className="text-base font-bold my-2" {...props} />
+              ),
+              p: (props: any) => <h1 className="text-base  my-2" {...props} />,
+              image: (props: any) => (
+                <img
+                  src={urlFor(props.asset._ref).url()!}
+                  className="w-full my-10"
+                  {...props}
+                />
+              ),
+              normal: (props: any) => {
+                return <p className={`text-base my-2 `} {...props} />;
+              },
               li: ({ children }: any) => (
                 <li className="ml-4 list-disc">{children}</li>
               ),
